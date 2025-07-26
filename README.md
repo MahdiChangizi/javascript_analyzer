@@ -7,10 +7,10 @@
 
 1. Clone the repo:
 
-   ```bash
-    git clone https://github.com/MahdiChangizi/javascript_analyzer.git
-    cd javascript_analyzer
-   ```
+```bash
+git clone https://github.com/MahdiChangizi/javascript_analyzer.git
+cd javascript_analyzer
+```
 2. Create Config.php with your project info and webhook URL.
     ```bash
     touch Config.php
@@ -35,10 +35,10 @@
         ?>
     ```
 3. Make sure the storage folder is writable:
-    ```bash
-    chmod -R 755 storage
-    ```
+```bash
+chmod -R 755 storage
+```
 4. Run the main script:
-    ```bash
-    php Core.php
-    ```
+```bash
+php Core.php
+```
