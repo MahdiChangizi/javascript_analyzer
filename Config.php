@@ -8,7 +8,7 @@ return [
     'PROJECT' => [
         [
             'NAME' => 'toplearn.com',
-            'SAVE_PATH' => dirname(__DIR__) . '/storage/toplearn/',
+            'SAVE_PATH' => dirname(__DIR__) . '/javascript_analyzer/storage/toplearn/',
             'URL' => 'https://toplearn.com',
             'FILE_NAMES' => [
                 'modernizr.js' => '/Site/js/modernizr.js',

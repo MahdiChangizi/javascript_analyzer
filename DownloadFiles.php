@@ -1,6 +1,7 @@
 <?php
 require_once __DIR__ . '/Helpers.php';
 require_once __DIR__ . '/JavaScriptAnalysis.php';
+
 class DownloadFiles {
     private $fileUrl;
     private $savePath;
@@ -8,7 +9,7 @@ class DownloadFiles {
 
     public function __construct($fileUrl, $savePath, $fileName) {
         $this->fileUrl = $fileUrl;
-        $this->savePath = $savePath;
+        $this->savePath = rtrim($savePath, '/') . '/';
         $this->fileName = $fileName;
     }
 
@@ -23,18 +24,18 @@ class DownloadFiles {
         curl_close($ch);
 
         if ($httpCode === 200) {
-            // Ensure the directory exists before saving the file
-            if (!file_exists(dirname($this->savePath . $this->fileName))) {
-                makeDirectory(dirname($this->savePath . $this->fileName));
+            if (!file_exists($this->savePath)) {
+                makeDirectory($this->savePath);
             }
 
-            // Check if the file already exists and is identical
-            if (fileExists($this->savePath . $this->fileName)) {
-                $analysis = new JavaScriptAnalysis($this->savePath , $this->fileName, $data);
+            $fullPath = $this->savePath . $this->fileName;
+
+            if (fileExists($fullPath)) {
+                $analysis = new JavaScriptAnalysis($this->savePath, $this->fileName, $data);
                 $hasChanges = $analysis->analyzeChanges();
             }
 
-            file_put_contents($this->savePath . $this->fileName, $data);
+            file_put_contents($fullPath, $data);
             return true;
         }
         return false;
@@ -44,5 +45,4 @@ class DownloadFiles {
         return file_get_contents($this->savePath . $this->fileName);
     }
 }
- 
 ?>

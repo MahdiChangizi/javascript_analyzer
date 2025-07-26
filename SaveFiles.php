@@ -3,9 +3,10 @@ class SaveFiles {
     private $fileUrl;
     private $savePath;
     private $fileName;
+
     public function __construct($fileUrl, $savePath, $fileName) {
         $this->fileUrl = $fileUrl;
-        $this->savePath = $savePath;
+        $this->savePath = rtrim($savePath, '/') . '/';
         $this->fileName = $fileName;
     }
 
@@ -19,5 +20,4 @@ class SaveFiles {
         return $downloader->getContent();
     }
 }
-
 ?>

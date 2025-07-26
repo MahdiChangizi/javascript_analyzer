@@ -18,7 +18,6 @@ if (!function_exists('makeDirectory')) {
     }
 }
 
-// if file exists
 if (!function_exists('fileExists')) {
     function fileExists($filePath) {
         return file_exists($filePath);
