@@ -1,2 +1,2 @@
-./storage
-./Config.php
+storage/
+Config.php
